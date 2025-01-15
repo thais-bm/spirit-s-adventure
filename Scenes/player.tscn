@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3sbrb5jcfwhi"]
+[gd_scene load_steps=19 format=3 uid="uid://b3sbrb5jcfwhi"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_h6qis"]
 [ext_resource type="Texture2D" uid="uid://ddc43f86hblqd" path="res://Assets/Luigi/_walk.png" id="1_oqj7a"]
-[ext_resource type="Script" path="res://Scripts/player_sprite_2d.gd" id="2_6fnns"]
 [ext_resource type="Texture2D" uid="uid://dcgif3nr4uxrq" path="res://Assets/Luigi/_idle.png" id="2_wny8q"]
 [ext_resource type="Texture2D" uid="uid://cpdq5uotdrerk" path="res://Assets/Luigi/_run.png" id="3_5efxh"]
 [ext_resource type="Texture2D" uid="uid://b8s83c2mbnvuf" path="res://Assets/Luigi/_death.png" id="4_xj81b"]
@@ -82,7 +81,7 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 
@@ -262,7 +261,7 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [false, true]
 }
 tracks/6/type = "method"
@@ -409,7 +408,6 @@ script = ExtResource("1_h6qis")
 position = Vector2(118, 505)
 scale = Vector2(2, 2)
 texture = ExtResource("2_wny8q")
-script = ExtResource("2_6fnns")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -438,7 +436,6 @@ disabled = true
 
 [connection signal="moved" from="Movement" to="AnimationPlayer" method="play_animation" binds= ["run"]]
 [connection signal="attacked_hammer" from="Input_movement" to="AnimationPlayer" method="play_animation" binds= ["marreta"]]
-[connection signal="movement_inputed" from="Input_movement" to="." method="_on_input_movement_inputed"]
 [connection signal="movement_inputed" from="Input_movement" to="Sprite2D" method="on_movement_inputed"]
 [connection signal="movement_inputed" from="Input_movement" to="Movement" method="move"]
 [connection signal="stopped" from="Input_movement" to="AnimationPlayer" method="play_animation" binds= ["idle"]]
