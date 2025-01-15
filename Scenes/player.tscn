@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3sbrb5jcfwhi"]
+[gd_scene load_steps=19 format=3 uid="uid://b3sbrb5jcfwhi"]
 
 [ext_resource type="Texture2D" uid="uid://ddc43f86hblqd" path="res://Assets/Luigi/_walk.png" id="1_oqj7a"]
 [ext_resource type="Texture2D" uid="uid://dcgif3nr4uxrq" path="res://Assets/Luigi/_idle.png" id="2_wny8q"]
 [ext_resource type="Texture2D" uid="uid://cpdq5uotdrerk" path="res://Assets/Luigi/_run.png" id="3_5efxh"]
 [ext_resource type="Texture2D" uid="uid://b8s83c2mbnvuf" path="res://Assets/Luigi/_death.png" id="4_xj81b"]
 [ext_resource type="Texture2D" uid="uid://52aattogg520" path="res://Assets/Luigi/_marretada.png" id="5_0o785"]
-[ext_resource type="Script" path="res://Scripts/input_movement.gd" id="6_1572q"]
-[ext_resource type="Script" path="res://Scripts/movement.gd" id="6_fkk7v"]
-[ext_resource type="Script" path="res://Scripts/animation_player.gd" id="6_ucxfg"]
+[ext_resource type="Script" path="res://Scripts/player/input_movement.gd" id="6_1572q"]
+[ext_resource type="Script" path="res://Scripts/player/movement.gd" id="6_fkk7v"]
+[ext_resource type="Script" path="res://Scripts/player/animation_player.gd" id="6_ucxfg"]
+[ext_resource type="Script" path="res://Scripts/player/marreta.gd" id="9_810om"]
 
 [sub_resource type="Animation" id="Animation_1pmf1"]
 length = 0.001
@@ -423,6 +424,9 @@ shape = SubResource("RectangleShape2D_1fipo")
 position = Vector2(120, 513)
 gizmo_extents = 56.5
 
+[node name="Marreta" type="Node2D" parent="CenterPosition"]
+script = ExtResource("9_810om")
+
 [node name="Attack_Area" type="Area2D" parent="CenterPosition"]
 position = Vector2(-25, -14)
 
@@ -438,6 +442,7 @@ texture = ExtResource("2_wny8q")
 
 [connection signal="moved" from="Movement" to="AnimationPlayer" method="play_animation" binds= ["run"]]
 [connection signal="attacked_hammer" from="Input_movement" to="AnimationPlayer" method="play_animation" binds= ["marreta"]]
-[connection signal="movement_inputed" from="Input_movement" to="CenterPosition/Sprite2D" method="on_movement_inputed"]
 [connection signal="movement_inputed" from="Input_movement" to="Movement" method="move"]
+[connection signal="movement_inputed" from="Input_movement" to="CenterPosition/Sprite2D" method="on_movement_inputed"]
 [connection signal="stopped" from="Input_movement" to="AnimationPlayer" method="play_animation" binds= ["idle"]]
+[connection signal="body_entered" from="CenterPosition/Attack_Area" to="CenterPosition/Marreta" method="_on_attack_area_body_entered"]

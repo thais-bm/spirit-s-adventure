@@ -7,15 +7,18 @@ signal stopped
 var is_stopped = true
 @export var input_lock = false
 
-# Controla os movimentos dos personagens
-# Se apertar e segurar por x tempo personagem entra no modo corrida
 func _process(delta: float) -> void:
 	if not input_lock:
 		var vel = Vector2.ZERO
 		if Input.is_action_pressed("move_left"):
 			vel.x -= delta
 		if Input.is_action_pressed("move_right"):
-			vel.x += delta
+			vel.x += delta	
+		if Input.is_action_pressed("jump"):
+			print("jump")
+		if Input.is_action_just_pressed("attack_marreta"):
+			print("atacou")
+			attacked_hammer.emit()
 			
 		if vel != Vector2.ZERO:
 			is_stopped = false
@@ -24,10 +27,4 @@ func _process(delta: float) -> void:
 			is_stopped = true
 			stopped.emit()
 			
-		if Input.is_action_pressed("jump"):
-			print("jump")
-		
-		if Input.is_action_just_pressed("attack_marreta"):
-			attacked_hammer.emit()
-			print("atacou")
 			

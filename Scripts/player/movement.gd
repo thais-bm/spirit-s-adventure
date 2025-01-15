@@ -12,9 +12,9 @@ func move(direction: Vector2):
 	# Mudar de direção do "central_position: pai da hitbox e do sprite
 	var center_position = get_parent().get_node("CenterPosition")
 	if sign(direction.x) > 0:
-		center_position.scale.x = -1
-	elif sign(direction.x) < 0:
 		center_position.scale.x = 1
+	elif sign(direction.x) < 0:
+		center_position.scale.x = -1
 
 	# Mover
 	get_parent().velocity = direction * speed * constant_speed
