@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://d018putjalj76"]
+[gd_scene load_steps=9 format=4 uid="uid://d018putjalj76"]
 
 [ext_resource type="Texture2D" uid="uid://xlubdc1ju6ib" path="res://Assets/Scenes/Background_blue.png" id="1_71f27"]
 [ext_resource type="Texture2D" uid="uid://bg1ymo2cyde87" path="res://Assets/Scenes/Terrain (16x16).png" id="2_3uxqg"]
 [ext_resource type="PackedScene" uid="uid://b3sbrb5jcfwhi" path="res://Scenes/player.tscn" id="3_nuadw"]
+[ext_resource type="PackedScene" uid="uid://dah3jqiv88o8g" path="res://Scenes/enemy.tscn" id="4_iri4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yhn5f"]
 texture = ExtResource("1_71f27")
@@ -336,3 +337,6 @@ tile_set = SubResource("TileSet_58uyb")
 [node name="Player" parent="." instance=ExtResource("3_nuadw")]
 position = Vector2(9, -9)
 disable_mode = 2
+
+[node name="Enemy" parent="." instance=ExtResource("4_iri4y")]
+position = Vector2(1050, 374)

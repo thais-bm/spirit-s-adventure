@@ -7,8 +7,6 @@ signal stopped
 var is_stopped = true
 @export var input_lock = false
 
-@onready var old_direction = get_parent().scale.x
-
 # Controla os movimentos dos personagens
 # Se apertar e segurar por x tempo personagem entra no modo corrida
 func _process(delta: float) -> void:

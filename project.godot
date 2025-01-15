@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Spirit's Adventure"
+config/name="Luigi's Adventure"
+config/description="Jogo teste de plataforma 2D com o Luigi pulando pra cima e pra baixo"
 config/tags=PackedStringArray("serio")
 run/main_scene="res://Scenes/scene_1.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
