@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://xlubdc1ju6ib" path="res://Assets/Scenes/Background_blue.png" id="1_71f27"]
 [ext_resource type="Texture2D" uid="uid://bg1ymo2cyde87" path="res://Assets/Scenes/Terrain (16x16).png" id="2_3uxqg"]
 [ext_resource type="PackedScene" uid="uid://b3sbrb5jcfwhi" path="res://Scenes/player.tscn" id="3_nuadw"]
-[ext_resource type="PackedScene" uid="uid://dah3jqiv88o8g" path="res://Scenes/enemy.tscn" id="4_iri4y"]
+[ext_resource type="PackedScene" uid="uid://dah3jqiv88o8g" path="res://enemy.tscn" id="4_iri4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yhn5f"]
 texture = ExtResource("1_71f27")
@@ -335,9 +335,9 @@ tile_map_data = PackedByteArray("AAAAACUAAAAGAAEAAAAAACYAAAAGAAEAAAABACUAAAAHAAE
 tile_set = SubResource("TileSet_58uyb")
 
 [node name="Player" parent="." instance=ExtResource("3_nuadw")]
-position = Vector2(478, 39)
-scale = Vector2(-1, 1)
+position = Vector2(486, 36)
+scale = Vector2(-1.01846, 1.00437)
 disable_mode = 2
 
 [node name="Enemy" parent="." instance=ExtResource("4_iri4y")]
-position = Vector2(539, 533)
+position = Vector2(764, 532)

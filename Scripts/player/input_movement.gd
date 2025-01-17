@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("move_left"):
 			vel.x -= delta
 		if Input.is_action_pressed("move_right"):
-			vel.x += delta	
+			vel.x += delta
 		if Input.is_action_pressed("jump"):
 			print("jump")
 		if Input.is_action_just_pressed("attack_marreta"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3sbrb5jcfwhi"]
+[gd_scene load_steps=20 format=3 uid="uid://b3sbrb5jcfwhi"]
 
 [ext_resource type="Texture2D" uid="uid://ddc43f86hblqd" path="res://Assets/Luigi/_walk.png" id="1_oqj7a"]
 [ext_resource type="Texture2D" uid="uid://dcgif3nr4uxrq" path="res://Assets/Luigi/_idle.png" id="2_wny8q"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/player/input_movement.gd" id="6_1572q"]
 [ext_resource type="Script" path="res://Scripts/player/movement.gd" id="6_fkk7v"]
 [ext_resource type="Script" path="res://Scripts/player/animation_player.gd" id="6_ucxfg"]
-[ext_resource type="Script" path="res://Scripts/player/marreta.gd" id="9_810om"]
+[ext_resource type="Script" path="res://Scripts/player/weapon.gd" id="9_810om"]
 
 [sub_resource type="Animation" id="Animation_1pmf1"]
 length = 0.001
@@ -398,6 +398,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fipo"]
 size = Vector2(16, 23)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyiff"]
+size = Vector2(32, 48)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_te38y"]
 size = Vector2(41.875, 49)
 
@@ -415,6 +418,8 @@ script = ExtResource("6_fkk7v")
 [node name="Input_movement" type="Node" parent="."]
 script = ExtResource("6_1572q")
 
+[node name="HealthComponent" type="Node" parent="."]
+
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(120, 513.5)
 scale = Vector2(2, 2)
@@ -424,8 +429,11 @@ shape = SubResource("RectangleShape2D_1fipo")
 position = Vector2(120, 513)
 gizmo_extents = 56.5
 
-[node name="Marreta" type="Node2D" parent="CenterPosition"]
-script = ExtResource("9_810om")
+[node name="HurtBox" type="Area2D" parent="CenterPosition"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPosition/HurtBox"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_uyiff")
 
 [node name="Attack_Area" type="Area2D" parent="CenterPosition"]
 position = Vector2(-25, -14)
@@ -435,8 +443,11 @@ position = Vector2(-1.9375, 13)
 shape = SubResource("RectangleShape2D_te38y")
 disabled = true
 
+[node name="Weapon" type="Node2D" parent="CenterPosition"]
+script = ExtResource("9_810om")
+
 [node name="Sprite2D" type="Sprite2D" parent="CenterPosition"]
-position = Vector2(-2, -8)
+position = Vector2(-2, -5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_wny8q")
 
@@ -445,4 +456,4 @@ texture = ExtResource("2_wny8q")
 [connection signal="movement_inputed" from="Input_movement" to="Movement" method="move"]
 [connection signal="movement_inputed" from="Input_movement" to="CenterPosition/Sprite2D" method="on_movement_inputed"]
 [connection signal="stopped" from="Input_movement" to="AnimationPlayer" method="play_animation" binds= ["idle"]]
-[connection signal="body_entered" from="CenterPosition/Attack_Area" to="CenterPosition/Marreta" method="_on_attack_area_body_entered"]
+[connection signal="body_entered" from="CenterPosition/Attack_Area" to="CenterPosition/Weapon" method="_on_attack_area_body_entered"]
