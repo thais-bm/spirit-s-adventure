@@ -22,11 +22,13 @@ func take_damage(attack: Attack):
 	
 	# Knockback
 	parent.velocity = (parent.global_position - attack.attack_position) * attack.knockback_force
-	print((parent.global_position - attack.attack_position) * attack.knockback_force)
 	parent.move_and_slide()
 	
 	# Morte
 	if health <= 0:
 		died.emit()
+
+# Garantir que só apaga depois da animacao de morte...
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "death":
 		parent.queue_free()
-		

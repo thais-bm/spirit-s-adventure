@@ -11,7 +11,6 @@ func play_animation(animation: String, priority: int):
 	if priority >= current_priority:
 		play(animation)
 		current_priority = priority
-		print("Animaco: ", animation)
 
 func _on_animation_finished() -> void:
 	current_priority = 0

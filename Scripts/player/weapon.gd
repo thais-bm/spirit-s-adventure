@@ -10,7 +10,6 @@ var knockback_force : float = 5.0
 var player_position = self.position
 
 
-
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	var attack : Attack = Attack.new()
 	attack.attack_damage = attack_damage

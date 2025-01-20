@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3sbrb5jcfwhi"]
+[gd_scene load_steps=22 format=3 uid="uid://b3sbrb5jcfwhi"]
 
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_jx0ol"]
 [ext_resource type="Texture2D" uid="uid://ddc43f86hblqd" path="res://Assets/Luigi/_walk.png" id="1_oqj7a"]
 [ext_resource type="Texture2D" uid="uid://dcgif3nr4uxrq" path="res://Assets/Luigi/_idle.png" id="2_wny8q"]
 [ext_resource type="Texture2D" uid="uid://cpdq5uotdrerk" path="res://Assets/Luigi/_run.png" id="3_5efxh"]
@@ -9,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/player/movement.gd" id="6_fkk7v"]
 [ext_resource type="Script" path="res://Scripts/player/animation_player.gd" id="6_ucxfg"]
 [ext_resource type="Script" path="res://Scripts/player/weapon.gd" id="9_810om"]
+[ext_resource type="PackedScene" uid="uid://br66316rffu71" path="res://Scenes/bullet.tscn" id="11_qv1h4"]
 
 [sub_resource type="Animation" id="Animation_1pmf1"]
 length = 0.001
@@ -405,6 +407,7 @@ size = Vector2(32, 48)
 size = Vector2(41.875, 49)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_jx0ol")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -450,6 +453,11 @@ script = ExtResource("9_810om")
 position = Vector2(-2, -5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_wny8q")
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(93, 513)
+
+[node name="bullet" parent="Gun" instance=ExtResource("11_qv1h4")]
 
 [connection signal="moved" from="Movement" to="AnimationPlayer" method="play_animation" binds= ["run"]]
 [connection signal="attacked_hammer" from="Input_movement" to="AnimationPlayer" method="play_animation" binds= ["marreta"]]

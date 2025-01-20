@@ -21,6 +21,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Spirit-s Adventure"
 
+[global_group]
+
+enemy=""
+
 [input]
 
 move_left={

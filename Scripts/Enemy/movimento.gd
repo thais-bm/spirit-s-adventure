@@ -11,13 +11,11 @@ signal walked
 # Child elements in use
 @onready var parent = get_parent()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Change direction upon wall collision
 	if parent.get_node("RayCastLeft").is_colliding():
-		print("chegou 3")
 		direction = Vector2.RIGHT
 	if parent.get_node("RayCastRight").is_colliding():
-		print("chegou 4")
 		direction = Vector2.LEFT
 	
 	# Flip the player based on direction
