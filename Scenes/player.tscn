@@ -454,13 +454,14 @@ position = Vector2(-2, -5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_wny8q")
 
-[node name="Gun" type="Node2D" parent="."]
-position = Vector2(93, 513)
+[node name="Gun" type="Node2D" parent="CenterPosition"]
+position = Vector2(-27, 0)
 
-[node name="bullet" parent="Gun" instance=ExtResource("11_qv1h4")]
+[node name="bullet" parent="CenterPosition/Gun" instance=ExtResource("11_qv1h4")]
 
 [connection signal="moved" from="Movement" to="AnimationPlayer" method="play_animation" binds= ["run"]]
 [connection signal="attacked_hammer" from="Input_movement" to="AnimationPlayer" method="play_animation" binds= ["marreta"]]
+[connection signal="fired" from="Input_movement" to="Movement" method="shoot"]
 [connection signal="movement_inputed" from="Input_movement" to="Movement" method="move"]
 [connection signal="movement_inputed" from="Input_movement" to="CenterPosition/Sprite2D" method="on_movement_inputed"]
 [connection signal="stopped" from="Input_movement" to="AnimationPlayer" method="play_animation" binds= ["idle"]]
